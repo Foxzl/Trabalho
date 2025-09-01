@@ -13,15 +13,8 @@ def escolherArquivo():
     arq_path = filedialog.askopenfilename()
     
     hapit = pd.read_excel(arq_path)
-    # hapit ['CELULAR_CONTATO_PRINCIPAL_SFA'] = hapit['CELULAR_CONTATO_PRINCIPAL_SFA'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TLFN_1'] = hapit['TLFN_1'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TLFN_2'] = hapit['TLFN_2'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TLFN_3'] = hapit['TLFN_3'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TLFN_4'] = hapit['TLFN_4'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TLFN_5'] = hapit['TLFN_5'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TEL_COMERCIAL_SIEBEL'] = hapit['TEL_COMERCIAL_SIEBEL'].apply(lambda x: f'{x:.0f}') 
-    # hapit ['TEL_CELULAR_SIEBEL'] = hapit['TEL_CELULAR_SIEBEL'].apply(lambda x: f'{x:.0f}')
-    # hapit ['TEL_RESIDENCIAL_SIEBEL'] = hapit['TEL_RESIDENCIAL_SIEBEL'].apply(lambda x: f'{x:.0f}')
+    hapit ['Contato'] = hapit['Contato'].apply(lambda x: f'{x:.0f}')
+    
 
     col_envi = hapit.loc[hapit ['STATUS'] == 'Ativo', ['CNPJ', 'RAZÃO SOCIAL', 'CONTA', 'Contato', 'E-mail', 'CONSU', 'Email_consu', 'Tipo']]
     print(col_envi)

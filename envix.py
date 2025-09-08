@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import ttk 
+import customtkinter as ctk
 import envix_whats as ew
+from PIL import ImageTk, Image
 
 
 janela = tk.Tk()
@@ -21,18 +23,17 @@ class Application():
     def frames(self):
         self.frame_1 = tk.Frame(self.janela, background='#2e8b57')
         self.frame_1.place(relx=0 , rely=0, relheight=1, relwidth=1)
+    def Effects(self):
+        self.bt_whats.configure(state='normal')
+        path_s = filedialog.askopenfilename()
     def buttons(self):
-        self.bt_whats = tk.Button(self.frame_1, text='Enviar', command=ew.start_whats)
+        self.bt_whats = ctk.CTkButton(self.frame_1, text="Enviar mensagens", command=ew.start_whats, state='disabled')
         self.bt_whats.place(relx=0.5,rely=0.5, anchor='center')
+               
 
-        self.bt_whats = tk.Button(self.frame_1, text='Selecionar arquivo', command=ew.escolherArquivo)
-        self.bt_whats.place(relx=0.5,rely=0.55, anchor='center')
+        self.bt_arq = ctk.CTkButton(self.frame_1, text="Escolher arquivo", command=self.Effects )
+        self.bt_arq.place(relx=0.5,rely=0.55, anchor='center')
 
-        
-        
-    def selecionar_pasta(self):
-    # Abre a janela de diálogo para selecionar uma pasta
-        self.path_paste_1 = filedialog.askopenfilename()
         
         
 

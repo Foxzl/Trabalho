@@ -5,22 +5,17 @@ import numpy
 import pandas as pd
 from selenium.webdriver.common.keys import Keys
 import os
-import heapq
 from tkinter import filedialog
 
 
-def escolherArquivo():
-    arq_path = filedialog.askopenfilename()
     
-    hapit = pd.read_excel(arq_path)
+def start_whats():
+    
+    hapit = pd.read_excel(path_s)
     hapit ['Contato'] = hapit['Contato'].apply(lambda x: f'{x:.0f}')
-    
-
     col_envi = hapit.loc[hapit ['STATUS'] == 'Ativo', ['CNPJ', 'RAZÃO SOCIAL', 'CONTA', 'Contato', 'E-mail', 'CONSU', 'Email_consu', 'Tipo']]
     print(col_envi)
-
-
-def start_whats():
+   
     print('Foi')
     driver = webdriver.Chrome()
     driver.get("https://web.whatsapp.com/")
@@ -38,7 +33,7 @@ def start_whats():
     textbox = driver.find_element(By.XPATH, '//*[@id="app"]/div/div[3]/div/div[2]/div[1]/span/div/span/div/div[1]/div[2]/div/div/div[1]/p')
     time.sleep(1)
     textbox.click()
-    textbox.send_keys('91985747028')
+    textbox.send_keys(col_envi['Contato'])
     time.sleep(2)
 
     chat = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[3]/div/div[2]/div[1]/span/div/span/div/div[2]/div[3]/div[2]')
